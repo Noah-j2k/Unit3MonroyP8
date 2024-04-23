@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
+        playerRb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            Debug.Log("Im on the ground");
         } 
         else if(collision.gameObject.CompareTag("Obstacle"))
         { 
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
            Debug.Log("GameOver!");
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("Death_Type_true", 1);
+            Debug.Log("Im Hit");
 
         }
     }
